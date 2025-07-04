@@ -1,0 +1,21 @@
+{
+  "labels": ["フロントエンド", "バックエンド", "クラウドサービス", "データベース", "システム設計", "QA（テスト）", "保守・運用", "DB設計", "プロジェクト設計", "プロジェクト管理", "人材マネジメント"],
+  "datasets": [
+    {
+      "label": "あなたの目指すべきスキルチャート",
+      "data": [6, 9, 5, 7, 3, 4, 3, 4, 3, 5, 1],
+      "borderColor": "#fff",
+      "backgroundColor": "transparent",
+      "fill": false,
+      "pointRadius": 0
+    },
+    {
+      "label": "あなたのスキルチャート",
+      "data": [3, 7, 5, 7, 3, 4, 2, 3, 2, 4, 1],
+      "borderColor": "transparent",
+      "backgroundColor": "rgba(200, 227, 144, 0.8)",
+      "fill": true,
+      "pointRadius": 0
+    }
+  ]
+}
