@@ -1,0 +1,812 @@
+/* リセット & ベース */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  line-height: 1.6;
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* ログイン画面セクション */
+.login-screen {
+  display: flex;
+  height: 100vh;
+  position: relative;
+}
+
+.particle-section {
+  flex: 1;
+  background: url("./images/colorful-background.png")
+    center / cover no-repeat;
+  image-rendering: crisp-edges;
+  position: relative;
+}
+
+#particleCanvas {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  touch-action: none;
+}
+
+.login-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url("./images/robot2049_3D_render_of_a_colorful_wavy_liquid_metal_shape_n_a_191e772b-25bc-48b0-853a-840017f61aa7_0.gif")
+    center / cover no-repeat;
+  image-rendering: crisp-edges;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+/* 背景パーティクル */
+.bg-particles {
+  position: absolute;
+  inset: 0;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.bg-particle {
+  position: absolute;
+  border-radius: 50%;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.floating-particles {
+  position: absolute;
+  inset: 0;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.floating-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  25% {
+    transform: translateY(-10px) translateX(5px);
+  }
+  50% {
+    transform: translateY(-5px) translateX(-5px);
+  }
+  75% {
+    transform: translateY(-15px) translateX(3px);
+  }
+}
+
+/* ログインカード */
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 1rem;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 10;
+}
+
+.card-header {
+  text-align: center;
+  padding: 2rem 2rem 1rem;
+}
+
+.card-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.card-description {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+}
+
+.card-content {
+  padding: 0 2rem 2rem;
+}
+
+/* ボタンスタイル */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.btn-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 0.5rem;
+}
+
+.btn-microsoft {
+  background: rgba(37, 99, 235, 0.9);
+  color: white;
+  margin-bottom: 0.75rem;
+}
+
+.btn-microsoft:hover {
+  background: rgba(29, 78, 216, 1);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.25);
+}
+
+.btn-google {
+  background: rgba(255, 255, 255, 0.9);
+  color: #1f2937;
+  margin-bottom: 0.75rem;
+}
+
+.btn-google:hover {
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.25);
+}
+
+.btn-purple {
+  background: rgba(147, 51, 234, 0.9);
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.btn-purple:hover {
+  background: rgba(126, 34, 206, 1);
+  box-shadow: 0 4px 16px rgba(147, 51, 234, 0.25);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.9), rgba(59, 130, 246, 0.9));
+  color: white;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #0891b2, #2563eb);
+  box-shadow: 0 4px 16px rgba(6, 182, 212, 0.25);
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* セパレーター */
+.separator {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.separator-line {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.separator-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 0 0.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+}
+
+/* フォーム */
+.login-form {
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  display: block;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0.5rem;
+  color: white;
+  font-size: 1rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.form-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+.forgot-password {
+  text-align: center;
+}
+
+.forgot-link {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.3s ease;
+}
+
+.forgot-link:hover {
+  color: white;
+}
+
+/* スクロール示唆 */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.scroll-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.8);
+  animation: bounce 2s infinite;
+}
+
+.scroll-text {
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+}
+
+.mouse-icon {
+  width: 1.5rem;
+  height: 2.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.mouse-wheel {
+  width: 0.25rem;
+  height: 0.75rem;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 0.125rem;
+  margin-top: 0.5rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* ホームページセクション */
+.homepage-section {
+  background-color: #1e3a8a;
+  color: white;
+}
+
+/* ヒーローセクション */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  position: relative;
+}
+
+.hero-content {
+  text-align: center;
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.hero-text {
+  margin-bottom: 4rem;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 8vw, 8rem);
+  font-weight: 300;
+  margin-bottom: 2rem;
+  letter-spacing: 0.05em;
+}
+
+.hero-divider {
+  width: 8rem;
+  height: 2px;
+  background: white;
+  margin: 0 auto 2rem;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.25rem, 3vw, 3rem);
+  font-weight: 300;
+  margin-bottom: 4rem;
+  line-height: 1.5;
+}
+
+.hero-desc-text {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 300;
+  margin-bottom: 3rem;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+@media (min-width: 640px) {
+  .hero-buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+/* Liquid Glass ボタン */
+.liquid-btn {
+  width: 16rem;
+  height: 3.5rem;
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.liquid-btn:hover {
+  transform: scale(1.05);
+}
+
+.liquid-btn-large {
+  width: 16rem;
+  height: 3.5rem;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.12) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.btn-highlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+}
+
+.liquid-btn span {
+  color: white;
+  font-weight: 300;
+  font-size: 1.125rem;
+  z-index: 1;
+}
+
+/* セクション共通 */
+.section-container {
+  max-width: 72rem;
+  margin: 0 auto;
+  text-align: center;
+  color: white;
+  padding: 0 1rem;
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 5rem);
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+.section-divider {
+  width: 6rem;
+  height: 2px;
+  background: white;
+  margin: 0 auto 5rem;
+}
+
+/* 価値提供セクション */
+.values-section {
+  padding: 8rem 0;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.value-card {
+  position: relative;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  transition: all 0.3s ease;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.value-card:hover {
+  transform: scale(1.05);
+}
+
+.card-highlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  border-radius: 1.5rem 1.5rem 0 0;
+}
+
+.value-number {
+  font-size: 3rem;
+  font-weight: 300;
+  opacity: 0.8;
+  margin-bottom: 1.5rem;
+}
+
+.value-title {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+
+.value-divider {
+  width: 4rem;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.6);
+  margin: 0 auto 1.5rem;
+}
+
+.value-description {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* 機能セクション */
+.features-section {
+  padding: 8rem 0;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.feature-card {
+  position: relative;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.03) 50%,
+    rgba(255, 255, 255, 0.06) 100%
+  );
+  backdrop-filter: blur(15px) saturate(180%);
+  -webkit-backdrop-filter: blur(15px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.feature-card:hover {
+  transform: scale(1.05);
+}
+
+.feature-title {
+  font-size: 1.125rem;
+  font-weight: 300;
+  margin-bottom: 0.75rem;
+}
+
+.feature-divider {
+  width: 2rem;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.4);
+  margin: 0 auto 0.75rem;
+}
+
+.feature-description {
+  font-size: 0.875rem;
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+/* 価格セクション */
+.pricing-section {
+  padding: 8rem 0;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.pricing-card {
+  position: relative;
+  padding: 2rem;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.pricing-card:hover {
+  transform: scale(1.05);
+}
+
+.pricing-range {
+  font-size: 1.125rem;
+  font-weight: 300;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+.pricing-price {
+  font-size: 3rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+.pricing-unit {
+  font-size: 0.875rem;
+  font-weight: 300;
+  opacity: 0.7;
+}
+
+.pricing-note {
+  font-size: 0.875rem;
+  font-weight: 300;
+  opacity: 0.7;
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+/* CTAセクション */
+.cta-section {
+  padding: 8rem 0;
+}
+
+.cta-description {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 300;
+  margin-bottom: 4rem;
+  line-height: 1.6;
+}
+
+.cta-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 640px) {
+  .cta-buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.cta-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.cta-feature {
+  position: relative;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.03) 50%,
+    rgba(255, 255, 255, 0.06) 100%
+  );
+  backdrop-filter: blur(15px) saturate(180%);
+  -webkit-backdrop-filter: blur(15px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.cta-feature-title {
+  font-size: 1.125rem;
+  font-weight: 300;
+  margin-bottom: 0.75rem;
+}
+
+.cta-feature-divider {
+  width: 2rem;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.4);
+  margin: 0 auto 0.75rem;
+}
+
+.cta-feature-desc {
+  font-size: 0.875rem;
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+  .login-screen {
+    flex-direction: column;
+  }
+
+  .particle-section,
+  .login-section {
+    flex: none;
+    height: 50vh;
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .pricing-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    margin: 0 0.5rem;
+  }
+
+  .card-content {
+    padding: 0 1rem 1rem;
+  }
+
+  .card-header {
+    padding: 1rem 1rem 0.5rem;
+  }
+}
